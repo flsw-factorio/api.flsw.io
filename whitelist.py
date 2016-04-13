@@ -1,6 +1,6 @@
 
 schema =  {
-         'user_id': {
+         'username': {
              'type': 'string',
              'required': True,
              'unique': True,
@@ -10,7 +10,7 @@ schema =  {
              'required': True,
              },
         'allow': {
-            'type': 'bool',
+            'type': 'boolean',
             'default': False
         }
      }
