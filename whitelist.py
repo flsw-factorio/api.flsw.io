@@ -10,7 +10,7 @@ schema =  {
              'required': True,
              },
         'allow': {
-            'type': 'bool'
+            'type': 'bool',
             'default': False
         }
      }

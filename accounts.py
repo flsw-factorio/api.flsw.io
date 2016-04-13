@@ -41,5 +41,3 @@ accounts = {
     # Finally, let's add the schema definition for this endpoint.
     'schema': schema,
 }
-
-
