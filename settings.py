@@ -1,6 +1,5 @@
 import os
 from accounts import accounts
-from whitelist import whitelist
 
 DEBUG=True
 
@@ -18,4 +17,3 @@ AUTH_FIELD = 'user_id'
 DOMAIN = {}
 
 DOMAIN['accounts'] = accounts
-DOMAIN['whitelist'] = whitelist

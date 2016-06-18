@@ -1,6 +1,8 @@
 from eve import Eve
 from eve.auth import BasicAuth
+from eve.auth import requires_auth
 from flask import current_app as app
+from flask import request
 import sys,logging
 from werkzeug.security import  generate_password_hash,check_password_hash
 from pprint import pformat
@@ -44,10 +46,15 @@ def accounts_pre_insert(items):
         item['password'] = generate_password_hash(item['password'])
 
 if __name__ == '__main__':
-    logger.debug("foo")
-    logger.warning("something")
-    logger.error("foobar")
     logger.info("starting")
     app = Eve(auth=RolesAuth)
     app.on_insert_accounts += accounts_pre_insert
+
+    @app.route('/whitelist', methods=['POST'])
+    @requires_auth('accounts')
+    def whitelist():
+        username = request.form['username']
+        ip = request.form['ip']
+        logger.info("Whitelist request: %s - %s" % (username, ip))
+        return pformat(request.form, indent=2)
     app.run()
